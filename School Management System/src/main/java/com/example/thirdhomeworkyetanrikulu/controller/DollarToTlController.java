@@ -16,12 +16,19 @@ public class DollarToTlController {
     @Autowired
     RestTemplate restTemplate;
 
-    @GetMapping("/{dollar}")
+    @GetMapping("/dollarToTL/{dollar}")
     public ResponseEntity<Double> calculateTl(@PathVariable double dollar){
 
-        double tl = restTemplate.getForObject("localhost:8081/api/conversion/"+dollar, Double.class);
+        double tl = restTemplate.getForObject("http://localhost:8081/api/conversion/dollarToTL/"+dollar, Double.class);
 
         return new ResponseEntity<>(tl, HttpStatus.OK);
+    }
+    @GetMapping("/tlToDollar/{tl}")
+    public ResponseEntity<Double> calculateDollar(@PathVariable double tl){
+
+        double dollar = restTemplate.getForObject("http://localhost:8081/api/conversion/tlToDollar/"+tl, Double.class);
+
+        return new ResponseEntity<>(dollar, HttpStatus.OK);
     }
 
 }
