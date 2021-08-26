@@ -38,7 +38,7 @@ public class StudentController {
         return new ResponseEntity<>(studentService.update(student), HttpStatus.OK);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/deleteById/{id}")
     public void deleteById(@PathVariable int id) {
         studentService.deleteById(id);
     }
@@ -46,6 +46,21 @@ public class StudentController {
     @DeleteMapping
     public void deleteByObject(@RequestBody Student student) {
         studentService.deleteByObject(student);
+    }
+
+    @GetMapping("/nameInclude/{name}")
+    public List<Student> findIncludeName(@PathVariable String name){
+        return studentService.findIncludeName(name);
+    }
+
+    @GetMapping("/groupByGender")
+    public List<?> groupByGender(){
+        return studentService.groupByGender();
+    }
+
+    @DeleteMapping("/deleteByName/{name}")
+    public void deleteByName(@PathVariable String name){
+        studentService.deleteByName(name);
     }
 }
 

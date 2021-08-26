@@ -40,5 +40,13 @@ public class CourseService {
         int id = course.getId();
         deleteById(id);
     }
+
+    public List<Course> findIncludeName(String name) {
+        return courseRepository.findByCourseNameContains(name);
+    }
+
+    public void deleteByName(String name) {
+        courseRepository.deleteByCourseName(name);
+    }
 }
 

@@ -1,5 +1,6 @@
 package com.example.thirdhomeworkyetanrikulu.controller;
 
+import com.example.thirdhomeworkyetanrikulu.entity.Course;
 import com.example.thirdhomeworkyetanrikulu.entity.Instructor;
 import com.example.thirdhomeworkyetanrikulu.service.InstructorService;
 import lombok.RequiredArgsConstructor;
@@ -35,7 +36,7 @@ public class InstructorController {
         return new ResponseEntity<>(instructorService.update(instructor), HttpStatus.OK);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/deleteById/{id}")
     public void deleteById(@PathVariable int id) {
         instructorService.deleteById(id);
     }
@@ -43,5 +44,15 @@ public class InstructorController {
     @DeleteMapping
     public void deleteByObject(@RequestBody Instructor instructor){
         instructorService.deleteByObject(instructor);
+    }
+
+    @GetMapping("/nameInclude/{name}")
+    public List<Instructor> findIncludeName(@PathVariable String name){
+        return instructorService.findIncludeName(name);
+    }
+
+    @DeleteMapping("/deleteByName/{name}")
+    public void deleteByName(@PathVariable String name){
+        instructorService.deleteByName(name);
     }
 }

@@ -1,6 +1,5 @@
 package com.example.thirdhomeworkyetanrikulu.service;
 
-import com.example.thirdhomeworkyetanrikulu.entity.Instructor;
 import com.example.thirdhomeworkyetanrikulu.entity.Student;
 import com.example.thirdhomeworkyetanrikulu.repository.StudentRepository;
 import lombok.RequiredArgsConstructor;
@@ -14,7 +13,6 @@ import java.util.List;
 public class StudentService {
 
     private final StudentRepository studentRepository;
-
 
 
     public List<Student> findAll() {
@@ -42,5 +40,17 @@ public class StudentService {
     public void deleteByObject(Student student) {
         int id = student.getId();
         deleteById(id);
+    }
+
+    public List<Student> findIncludeName(String name) {
+        return studentRepository.findByNameContains(name);
+    }
+
+    public List<?> groupByGender() {
+        return studentRepository.groupByGender();
+    }
+
+    public void deleteByName(String name) {
+        studentRepository.deleteByName(name);
     }
 }

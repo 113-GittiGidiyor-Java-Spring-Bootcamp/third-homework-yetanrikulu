@@ -36,7 +36,7 @@ public class CourseController {
         return new ResponseEntity<>(courseService.update(course), HttpStatus.OK);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/deleteById/{id}")
     public void deleteById(@PathVariable int id) {
         courseService.deleteById(id);
     }
@@ -44,6 +44,16 @@ public class CourseController {
     @DeleteMapping
     public void deleteByObject(@RequestBody Course course) {
         courseService.deleteByObject(course);
+    }
+
+    @GetMapping("/nameInclude/{name}")
+    public List<Course> findIncludeName(@PathVariable String name){
+        return courseService.findIncludeName(name);
+    }
+
+    @DeleteMapping("/deleteByName/{name}")
+    public void deleteByName(@PathVariable String name){
+        courseService.deleteByName(name);
     }
 
 }

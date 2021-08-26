@@ -42,5 +42,13 @@ public class InstructorService {
         int id = instructor.getId();
         deleteById(id);
     }
+
+    public List<Instructor> findIncludeName(String name) {
+        return instructorRepository.findByNameContains(name);
+    }
+
+    public void deleteByName(String name) {
+        instructorRepository.deleteByName(name);
+    }
 }
 

@@ -12,4 +12,12 @@ import javax.persistence.Entity;
 @NoArgsConstructor
 public class VisitingResearcher extends Instructor {
     private double hourlySalary;
+
+    public VisitingResearcher(String name,String address, String phoneNumber, double hourlySalary){
+        setName(name);
+        setAddress(address);
+        setPhoneNumber(phoneNumber);
+        setHourlySalary(hourlySalary);
+    }
+
 }

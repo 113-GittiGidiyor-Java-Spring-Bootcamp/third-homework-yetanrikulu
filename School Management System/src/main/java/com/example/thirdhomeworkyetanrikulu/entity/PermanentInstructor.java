@@ -12,4 +12,11 @@ import javax.persistence.Entity;
 @NoArgsConstructor
 public class PermanentInstructor extends Instructor {
     private double fixedSalary;
+
+    public PermanentInstructor(String name,String address, String phoneNumber, double fixedSalary){
+        setName(name);
+        setAddress(address);
+        setPhoneNumber(phoneNumber);
+        setFixedSalary(fixedSalary);
+    }
 }
