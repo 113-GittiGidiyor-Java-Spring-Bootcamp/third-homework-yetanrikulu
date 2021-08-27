@@ -51,6 +51,6 @@ public class StudentService {
     }
 
     public void deleteByName(String name) {
-        studentRepository.deleteByName(name);
+        studentRepository.deleteStudentByName(name);
     }
 }

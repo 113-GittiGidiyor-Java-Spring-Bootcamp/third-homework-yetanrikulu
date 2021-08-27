@@ -46,7 +46,7 @@ public class CourseService {
     }
 
     public void deleteByName(String name) {
-        courseRepository.deleteByCourseName(name);
+        courseRepository.deleteCourseByCourseName(name);
     }
 }
 

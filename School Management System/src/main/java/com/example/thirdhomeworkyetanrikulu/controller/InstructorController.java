@@ -2,6 +2,8 @@ package com.example.thirdhomeworkyetanrikulu.controller;
 
 import com.example.thirdhomeworkyetanrikulu.entity.Course;
 import com.example.thirdhomeworkyetanrikulu.entity.Instructor;
+import com.example.thirdhomeworkyetanrikulu.entity.PermanentInstructor;
+import com.example.thirdhomeworkyetanrikulu.repository.PermanentInstructorRepository;
 import com.example.thirdhomeworkyetanrikulu.service.InstructorService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -16,6 +18,7 @@ import java.util.List;
 public class InstructorController {
 
     private final InstructorService instructorService;
+    private final PermanentInstructorRepository permanentInstructorRepository;
 
     @GetMapping
     public ResponseEntity<List<Instructor>> findAll() {
@@ -54,5 +57,15 @@ public class InstructorController {
     @DeleteMapping("/deleteByName/{name}")
     public void deleteByName(@PathVariable String name){
         instructorService.deleteByName(name);
+    }
+
+    @GetMapping("/highestSalary")
+    public ResponseEntity<List<PermanentInstructor>> getThreeInstructorHaveHighestSalary(){
+        return new ResponseEntity<>(instructorService.findTop3AccordingToSalary(), HttpStatus.OK);
+    }
+
+    @GetMapping("/lowestSalary")
+    public ResponseEntity<List<PermanentInstructor>> getThreeInstructorHaveLowestSalary(){
+        return new ResponseEntity<>(instructorService.findBottom3AccordingToSalary(), HttpStatus.OK);
     }
 }
